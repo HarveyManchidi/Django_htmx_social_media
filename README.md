@@ -13,5 +13,5 @@ python manage.py createsuperuser
 
 
 ## NB
--***Likes are not using HTMX***,
--***Replace SECRET_KEY in settings.py***
+- ***Likes are not using HTMX***,
+- ***Replace SECRET_KEY in settings.py***
