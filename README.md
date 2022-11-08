@@ -6,8 +6,12 @@ python -m venv env_name
 env\scripts\activate
 ### Install all the dependencies
 pip install requirements.txt
+### Migrate
+python manage.py migrate
 ### Create Superuser
 python manage.py createsuperuser
 
 
-## NB:***Likes are not using HTMX***
+## NB
+:***Likes are not using HTMX***
+:***Replace SECRET_KEY in settings.py ***
