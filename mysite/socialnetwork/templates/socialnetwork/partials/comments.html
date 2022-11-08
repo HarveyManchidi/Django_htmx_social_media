@@ -1,0 +1,18 @@
+
+<hr />
+{% for comment in comments %}
+<a
+  href="{{comment.user.profile.get_absolute_url}}"
+  class="d-flex align-items-center mb-3 text-decoration-none"
+>
+  <img
+    class="rounded-circle"
+    src="{{comment.user.profile.photo.url}}"
+    width="50px"
+    height="50px"
+  />
+  <h4 class="ms-2 mt-2">{{comment.user}}</h4>
+</a>
+<p class="ms-4">{{comment.body}}</p>
+<hr />
+{% endfor %}

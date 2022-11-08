@@ -1,0 +1,29 @@
+body{
+    background:linear-gradient(rgba(255, 255, 255, 0.924),rgba(25,2,2,0.1));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+}
+.bg-login{
+    background:linear-gradient(rgba(18, 18, 18, 0.793),rgba(0, 0, 0, 0.842)),url(LoginBg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.bg-form{
+    background:linear-gradient(rgba(232, 46, 0, 0.793),rgba(234, 108, 24, 0.842));
+}
+.bg-lime{
+    background:linear-gradient(rgba(232, 46, 0, 0.793),rgba(234, 108, 24, 0.842));
+}
+.ouline-white{
+    padding: 9px 6px;
+    border-radius: 3px;
+}
+.ouline-white:hover{
+    border: 1px solid white;
+    padding: 5px;
+
+    border-radius: 3px;
+}

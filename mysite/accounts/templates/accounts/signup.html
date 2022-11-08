@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Sign up | {% endblock title %}
+{% block content %}
+<div class="row shadow col-10  bg-form" style="margin:auto;margin-top:100px;border-radius:10px;">
+    <div class="col-4 bg-login " style="height:570px;border-radius:10px 20px 20px 10px;">
+        <h2 class="text-white text-center fw-bold mt-5">Welcome</h2>
+        <h3 class="text-white text-center fw-bold">to the Network</h3>
+    </div>
+    <div class="col-7 mt-4 text-white">
+        <form method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+            <div class="form-group">
+                <button class="btn btn-success">Create account</button>
+                <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

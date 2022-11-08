@@ -1,0 +1,4 @@
+env
+mysite/.env
+mysite/media
+mysite/db.sqlite3

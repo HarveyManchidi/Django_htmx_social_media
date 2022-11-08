@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Sign up | {% endblock title %}
+{% block content %}
+<section class="">
+    <div class="bg-lime" style="padding-top: 200px">
+
+    </div>
+    <div class="bg-dark text-white w-75 container p-4 shadow" style="margin-top:-100px;border-radius:25px;">
+        <form method="post">
+            {% csrf_token %}
+            {{p_form|crispy}}
+            <div class="form-group">
+                <button class="btn btn-success">Update</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+{% endblock content %}

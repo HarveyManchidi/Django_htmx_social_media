@@ -1,0 +1,21 @@
+
+{% if request.user  != profile.user %}
+<a href="#" class="text-decoration-none text-white ouline-white"><b>{{num_following}}</b> Following</a>
+<a href="#"  class="text-decoration-none text-white ouline-white"><b>{{num_followers}}</b> Followers</a>
+{% if request.user not in profile.followers.all %}
+
+    <button hx-post="{% url 'follow-profile' profile.pk %}" 
+        hx-target="#follow"
+        hx-trigger="click"
+       
+        class="btn btn-outline-primary float-end">follow</button>
+{% else %}  
+    <button hx-post="{% url 'follow-profile' profile.pk %}" 
+        hx-target="#follow"
+        hx-trigger="click"
+        
+        class="btn btn-outline-danger float-end">Unfollow</button>
+    
+ 
+{% endif %}    
+{% endif %}

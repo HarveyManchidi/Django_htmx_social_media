@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}{{post.author}} post | {% endblock title %}
+{% block content %}
+    <section class="container" >
+        
+        <div class="card my-3 rounded-3 p-2 shadow bg-dark text-white w-75 m-auto" >
+            <div class="d-flex justify-content-between" >   
+                    <a href="{{post.author.profile.get_absolute_url}}" class="d-flex align-items-center ms-4 mb-3 text-decoration-none">
+                        <img class="rounded-circle" src="{{post.author.profile.photo.url}}" width="50px" height="50px" />
+                        <h4 class="ms-2 mt-2" >{{ post.author }}</h4>
+                    </a>
+
+                    <!-- Follow and Unfollow using HTMX-->
+                    <div>  
+                        {% if request.user  != post.author.profile.user %}
+                        {% if request.user not in post.author.profile.followers.all %}
+                            <button id="follow-btn" hx-post="{% url 'detail-follow' post.pk post.author.profile.pk %}" 
+                                hx-target="#follow-btn"
+                                hx-trigger="click"
+                                hx-swap-oob="true"
+                                class="btn btn-outline-primary float-end">follow</button>
+                        {% else %}  
+                            <button id="follow-btn" hx-post="{% url 'detail-follow' post.pk post.author.profile.pk %}" 
+                            hx-target="#follow-btn"
+                            hx-trigger="click"
+                            hx-swap-oob="true"
+                            class="btn btn-outline-danger float-end">Unfollow</button>
+                        {% endif %}    
+                        {% endif %}
+                    </div>
+
+                    
+                    
+                         
+                    
+            </div>
+            
+                <img src="{{post.image.url}}" width="100%" height="500px"/>
+                <p><b>{{ post.author }}</b>: {{post.caption}}</p>
+            
+            <div class="form-group mt-2 ms-4">
+                {% if request.user not in post.likes.all %}
+                <a href="{% url 'like-post' post.pk %}" class="btn btn-outline-primary">
+                    <i style="font-size:24px" class="fa">&#xf087;</i>
+                </a>
+                {% else %}
+                <a href="{% url 'like-post' post.pk %}" class="btn btn-primary">
+                    <i style="font-size:24px" class="fa">&#xf087;</i>
+                </a>
+                {% endif %}
+ 
+            </div>
+        </div>    
+        
+        <div  class="card my-3 rounded-3 p-2 shadow bg-dark text-white w-75 m-auto" >
+            {% load widget_tweaks %}
+            <h1>Comments</h1>
+            <form method="post" hx-post="{% url 'add-comment' post.pk %}" hx-target="#comments">
+                {% csrf_token %} 
+                {% render_field form.body  placeholder="body" %}
+                <button class="btn btn-outline-warning float-end">Post</button>
+            </form>
+            <div id="comments">{% include 'socialnetwork/partials/comments.html' %}</div>
+        </div>
+    </section>
+   
+    
+{% endblock content %}
